@@ -1,0 +1,77 @@
+/* Reset default styles for a cleaner slate */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Set body styles for better readability */
+  body {
+    font-family: sans-serif;
+    line-height: 1.6;
+  }
+  
+  /* Style the main container */
+  main {
+    padding: 1rem; /* Add some padding for better visual separation */
+  }
+  
+  /* Style the search form */
+  form {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem; /* Add some space after the form */
+  }
+  
+  form label {
+    flex: 1; /* Make label take up available space */
+    margin-right: 0.5rem; /* Add some margin between label and input */
+  }
+  
+  form input[type="text"],
+  form input[type="submit"] {
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  /* Style the table */
+  table {
+    width: 100%; /* Make the table take full width */
+  }
+  
+  th,
+  td {
+    padding: 0.75rem; /* Add padding for better spacing */
+    border-bottom: 1px solid #ddd;
+    text-align: left; /* Align content to the left */
+  }
+  
+  th {
+    font-weight: bold;
+  }
+  
+  /* Style the table rows */
+  .clickable {
+    cursor: pointer; /* Indicate clickable rows with cursor change */
+  }
+  
+  .clickable:hover {
+    background-color: #eee; /* Add hover effect for clickable rows */
+  }
+  
+  /* Style the artist and name columns for better readability on mobile */
+  td:nth-child(2),
+  td:nth-child(3) {
+    flex: 1; /* Make artist and name take available space proportionally */
+    overflow: hidden; /* Hide overflow content with ellipsis */
+    text-overflow: ellipsis; /* Add ellipsis for overflowing text */
+    white-space: nowrap; /* Prevent wrapping of artist and name */
+  }
+  
+  /* Style images */
+  img {
+    width: 60px; /* Set image width */
+    height: 60px; /* Set image height */
+    object-fit: cover; /* Maintain aspect ratio and fill the space */
+  }

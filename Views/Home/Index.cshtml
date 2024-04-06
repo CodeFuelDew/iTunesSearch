@@ -1,0 +1,68 @@
+﻿@using System.Text.Json;
+@{
+    
+    ViewData["Title"] = "iTunes Search";
+   
+}
+
+@model SongViewModel
+
+<div style="display:flex; justify-content:center; width:100%;">
+    <form method="get" action="/">
+        <p>
+            <label for="SearchString">Search Term:</label>
+            <input type="text" id="SearchString" name="SearchString"
+            placeholder="Favorite Music"
+            value="@(ViewBag.SearchString ?? String.Empty)"/>
+            <input type="submit" value="Search iTunes" />
+        </p>
+    </form>
+   
+</div>
+@if (Model != null ) {
+    if(Model.Songs.Count == 0)
+        {<h3>No Matching Records.</h3>}
+    else{
+        @* <table>
+            <thead>
+                <tr>
+                    <th class="icon"></th>
+                    <th>@Html.DisplayNameFor(model => model.Songs[0].Artist)</th>
+                    <th>@Html.DisplayNameFor(model => model.Songs[0].Name)</th>
+
+                </tr>
+            </thead> *@
+             @* <form id="formSort" method="post" action="@Url.Action("SortResults", "Home")"> *@
+                @* <select id="sortSelection" name="sortSelection" onchange="updateResults()">
+                    <option value="Featured" selected="true">Featured</option>
+                    <option value="Artist-ASC">Artist: A-Z</option>
+                    <option value="Artist-DESC">Artist: Z-A</option>
+                    <option value="Name-ASC">Name: A-Z</option>
+                    <option value="Name-DESC">Name: Z-A</option>
+                </select>
+                
+                <input type="hidden" value="@JsonSerializer.Serialize(@Model,typeof(SongViewModel),new JsonSerializerOptions{IncludeFields=true})" id="oSVM" name="oSVM"/> *@
+            @* </form> *@
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap:4px;">
+                @foreach(var r in Model.Songs) {
+                    @* <tr class="clickable" onclick="window.open('@Url.Action("GetMoreInfo", "Home")?ce=@r.Stringify()', '_blank')"> *@
+
+                        @* <td class="icon"><img src="@r.IconUrl"/></td>
+                        <td>@r.Artist</td>
+                        <td>@r.Name</td> *@
+                    @* </tr> *@
+                    <div class="clickable" onclick="window.open('@Url.Action("GetMoreInfo", "Home")?ce=@r.Stringify()', '_blank')">
+                        <div style="display:flex; justify-content:center">
+                            <img src="@r.IconUrl"/>
+                        </div>                        
+                        <div>
+                            <span style="font-weight:bold;">@r.Name</span>
+
+                            <div style="cursor:default;">Artist: @r.Artist </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        @* </table> *@
+    }
+}

@@ -1,0 +1,87 @@
+/* html {
+  font-size: 14px;
+} */
+
+
+th, td {
+  padding: 12px 15px;
+  max-width: 390px;
+}
+
+td.icon {
+  width:160px;
+}
+/* @media (min-width: 300px) {
+  html {
+    font-size: 9px;
+  }
+ 
+  
+} */
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+/*   */
+
+div.clickable span{
+  color: #0366d6;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+div.clickable span:hover{
+  color: #0366d6;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+tr.clickable {
+  color: #0366d6;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+tr.clickable:hover {
+  color: #0366d6;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+
+table.click_table th {
+  cursor:pointer;
+  color:#0366d6;
+}
+
+table.click_table th:hover {
+  cursor:pointer;
+  color:#0366d6;
+  text-decoration: underline;
+}
+
+table.click_table th.asc:after {
+  content:"\25B2";
+}
+
+table.click_table th.desc:after {
+  content:"\25BC";
+}

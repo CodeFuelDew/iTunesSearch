@@ -1,0 +1,13 @@
+@foreach(var r in Model.Songs) {
+   
+    <div class="clickable" onclick="window.open('@Url.Action("GetMoreInfo", "Home")?ce=@r.Stringify()', '_blank')">
+        <div style="display:flex; justify-content:center">
+            <img src="@r.IconUrl"/>
+        </div>                        
+        <div>
+            <span style="font-weight:bold;">@r.Name</span>
+
+            <div style="cursor:default;">Artist: @r.Artist </div>
+        </div>
+    </div>
+}

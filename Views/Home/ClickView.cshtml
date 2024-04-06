@@ -1,0 +1,56 @@
+﻿@{
+    ViewData["Title"] = "Click View";
+}
+
+<h1>Click Report</h1>
+<script type="text/javascript">
+
+const sortBy = ( tbl, col ) => {
+    let cln = $(col).hasClass("asc") ? "desc" : "asc";
+    let ths = tbl.find("th");
+    
+    ths.removeClass("asc").removeClass("desc");
+
+    $(col).addClass(cln);
+    let idx = $('th:contains("'+col.innerText+'")').index();
+    let rows = tbl.find("tbody > tr");
+    rows.sort((a,b) => {
+        if(cln == "asc")
+            return $('td:eq('+idx+')',a).text().localeCompare( $('td:eq('+idx+')', b).text());
+        else
+            return $('td:eq('+idx+')',b).text().localeCompare( $('td:eq('+idx+')', a).text());
+
+    });
+
+    let tbody = tbl.find("tbody");
+    tbody.append(rows);
+}
+</script>
+
+@if(ClickCounter.Counter != null ) {
+    <table class="click_table">
+        <thead>
+            <th onclick="sortBy($('.click_table'),this)">Artist</th>
+            <th onclick="sortBy($('.click_table'),this)">Name</th>
+            <th onclick="sortBy($('.click_table'),this)">Clicks</th>
+
+        </thead>
+        @foreach(KeyValuePair<string, int> kvp in ClickCounter.Counter){
+            ClickElement o = System.Text.Json.JsonSerializer.Deserialize<ClickElement>(kvp.Key, new System.Text.Json.JsonSerializerOptions{IncludeFields=true});
+            <tr>
+                <td>
+                    @o.Artist
+                </td>
+                <td>
+                    @o.Name
+                </td>
+                <td>
+                    @kvp.Value
+                </td>
+            </tr>
+            }
+    </table>
+}
+else {
+    <h3>No Clicks Recorded Yet.</h3>
+}
